@@ -90,8 +90,8 @@ const buttons = document.querySelectorAll(".pagination-btn");
 const swiperContainer = document.querySelector(".swiper-container");
 buttons.forEach((btn, index) => {
   const imgElement = btn.querySelector("img");
-  const buttonActive = document.querySelector(".pagination-btn.active");
   btn.addEventListener("click", function () {
+    const buttonActive = document.querySelector(".pagination-btn.active");
     buttonActive.classList.remove("active");
     buttonActive.querySelector("img").src =
       "https://amigroup.com.vn/wp-content/uploads/2025/06/logo-investment-blue.svg";
