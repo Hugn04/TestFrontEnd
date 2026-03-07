@@ -44,13 +44,14 @@ function changeImageSticky(url) {
   pinSpacer.src = url;
 }
 function handleSticky() {
-  stickyItems.forEach((el) => {
+  stickyItems.forEach((el, index) => {
     if (isInMiddle(el)) {
       const previousElement = el.previousElementSibling;
       if (previousElement) {
         previousElement.style.opacity = 0.4;
       }
       el.style.opacity = 1;
+      document.querySelector(".active-item-index-text").innerText = index + 1;
 
       changeImageSticky(el.dataset.src);
     }
@@ -69,4 +70,42 @@ gsap.to(".banner-img", {
     end: "+=1200",
     scrub: true,
   },
+});
+
+function getRotate(el) {
+  const style = window.getComputedStyle(el);
+  const matrix = style.transform;
+
+  if (matrix === "none") return 0;
+
+  const values = matrix.split("(")[1].split(")")[0].split(",");
+  const a = values[0];
+  const b = values[1];
+
+  const angle = Math.round(Math.atan2(b, a) * (180 / Math.PI));
+  return angle;
+}
+// Section 5
+const buttons = document.querySelectorAll(".pagination-btn");
+const swiperContainer = document.querySelector(".swiper-container");
+buttons.forEach((btn, index) => {
+  const imgElement = btn.querySelector("img");
+  const buttonActive = document.querySelector(".pagination-btn.active");
+  btn.addEventListener("click", function () {
+    buttonActive.classList.remove("active");
+    buttonActive.querySelector("img").src =
+      "https://amigroup.com.vn/wp-content/uploads/2025/06/logo-investment-blue.svg";
+    const style = getComputedStyle(btn);
+    const rotate = style.rotate;
+    imgElement.src =
+      "	https://amigroup.com.vn/wp-content/uploads/2025/06/logo-training-white.svg";
+    btn.classList.add("active");
+    swiperContainer.style.rotate = `calc(${rotate} + 145deg)`;
+
+    // bỏ active cũ
+    document.querySelectorAll(".pagination-btn").forEach((b) => {});
+
+    // thêm active mới
+    this.classList.add("pagination-btn-active");
+  });
 });

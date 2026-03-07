@@ -447,7 +447,7 @@ h4 span {
   z-index: 0;
   user-select: none;
   pointer-events: none;
-  transform: translateY(-50px);
+  transform: translateY(-20px);
 }
 .section-4 .sticky-container {
   display: flex;
@@ -458,6 +458,12 @@ h4 span {
   font-size: 0.7rem;
   font-weight: 400;
   padding-right: 5rem;
+  position: relative;
+  height: 900px;
+}
+.left-col p {
+  position: sticky;
+  top: 100px;
 }
 .section-4 .sticky-container .mid-col {
   text-align: left;
@@ -490,8 +496,117 @@ h4 span {
   top: 100px;
   width: 30rem;
   height: auto;
-  height: auto;
   border-radius: 16px;
+}
+.section-4 .deco-2 {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.section-5 {
+  position: relative;
+  background: white;
+  overflow: hidden;
+}
+.section-5 .deco-2 {
+  position: absolute;
+  bottom: 0;
+  pointer-events: none;
+  left: 1rem;
+  width: 35rem;
+  height: fit-content;
+  z-index: 1;
+}
+.section-5 .deco-1 {
+  position: absolute;
+  bottom: 0;
+  left: 3.5rem;
+  width: 25.75rem;
+  height: 25.75rem;
+  z-index: 0;
+}
+.section-5 .deco-3 {
+  height: 40rem;
+  padding: 6rem 6rem;
+  position: relative;
+  overflow: hidden;
+}
+.section-5 .slide-container {
+  position: absolute;
+  top: -6rem;
+  right: -6rem;
+  width: 38rem;
+  height: 38rem;
+}
+.section-5 .swiper-container {
+  position: absolute;
+  aspect-ratio: 1/1;
+  width: 100%;
+  height: 100%;
+  transition: rotate 0.6s ease;
+  rotate: calc(145deg + -65deg);
+}
+.section-5 .swiper-container svg {
+  width: auto;
+  height: 100%;
+}
+.section-5 .pagination-btn {
+  border: none;
+  position: absolute;
+  box-shadow: 0px 4px 54.1px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 9999px;
+  top: 0;
+  left: 50%;
+  transform-origin: 0 19rem;
+  width: 6.5rem;
+  height: 6.5rem;
+  transform: translate(-50%, -50%);
+}
+.section-5 .pagination-btn {
+  rotate: -65deg;
+  /* animation: rotate 1s infinite; */
+}
+.section-5 .pagination-btn:nth-child(2) {
+  rotate: -105deg;
+}
+.section-5 .pagination-btn:nth-child(3) {
+  rotate: -140deg;
+}
+.section-5 .pagination-btn:nth-child(4) {
+  rotate: -175deg;
+}
+.section-5 .pagination-btn:nth-child(5) {
+  rotate: -210deg;
+}
+.section-5 .pagination-btn img {
+  width: 70%;
+}
+.section-5 .pagination-btn.active {
+  background: linear-gradient(180deg, #3e4089 0%, #121458 100%);
+  transition: all 0.4s ease;
+}
+.section-5 .slide-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.section-5 .slide-content img {
+  width: 13.4375rem;
+  height: 9.80769rem;
+  object-fit: cover;
+  margin-left: auto;
+}
+@keyframes rotate {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
 }
 
 @keyframes show {
@@ -606,6 +721,7 @@ h4 span {
   }
   .section-4 .sticky-container .left-col {
     padding: 0;
+    height: auto;
     text-align: right;
     margin-top: 250px;
   }
