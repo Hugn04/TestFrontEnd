@@ -1062,7 +1062,7 @@ h4 span {
   }
   .section-2 {
     z-index: 2;
-    height: 100vh;
+    height: auto;
   }
   .section-2 .content-container {
     left: 0;
