@@ -182,7 +182,67 @@ listThumContainer.forEach((btn, index) => {
     famousContainer.querySelector("strong").textContent =
       dataPeople[index].name;
     famousContainer.querySelector("span").textContent = dataPeople[index].role;
-    document.querySelector(".item-preview img").src = dataPeople[index].image;
+    const imgElement = document.querySelector(".item-preview img");
+    gsap.to(imgElement, {
+      opacity: 0.5,
+      duration: 0.3,
+      onComplete: () => {
+        imgElement.src = dataPeople[index].image;
+        gsap.to(imgElement, { opacity: 1, duration: 0.5 });
+      },
+    });
     btn.classList.add("active");
   });
 });
+// Section 9
+const container = document.querySelector(".section-9 .item-container");
+console.log(container);
+
+let position = 0;
+const speed = 0.5;
+
+function loop() {
+  position -= speed;
+
+  if (Math.abs(position) >= container.scrollWidth / 2) {
+    position = 0;
+  }
+
+  container.style.transform = `translateX(${position}px)`;
+
+  requestAnimationFrame(loop);
+}
+
+loop();
+
+const lenis = new Lenis({
+  duration: 1.5, // càng lớn càng delay
+  smoothWheel: true,
+});
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+// Section 10
+const wrapper = document.querySelector(".card-wrapper");
+const cards = document.querySelectorAll(".card");
+
+let index = 0;
+const width = cards[0].offsetWidth;
+
+document.querySelector(".next").onclick = () => {
+  if (index < cards.length - 1) {
+    index++;
+    wrapper.style.transform = `translateX(-${index * width}px)`;
+  }
+};
+
+document.querySelector(".prev").onclick = () => {
+  if (index > 0) {
+    index--;
+    wrapper.style.transform = `translateX(-${index * width}px)`;
+  }
+};
